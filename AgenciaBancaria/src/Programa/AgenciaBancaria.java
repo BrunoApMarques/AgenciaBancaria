@@ -28,7 +28,7 @@ public class AgenciaBancaria {
 		System.out.println("|   Opção 6 - Sair          |");
 
 		int operacao = input.nextInt();
-		;
+		
 
 		switch (operacao) {
 		case 1:
@@ -63,4 +63,37 @@ public class AgenciaBancaria {
 		}
 	}
 
+	public static void CriarConta() {
+		// System.out.println("Você está criando uma conta\n");
+
+		System.out.println("\nNome: ");
+		String nome = input.next();
+
+		System.out.println("\nCPF: ");
+		String cpf = input.next();
+
+		System.out.println("Email: ");
+		String email = input.next();
+
+		Pessoa cliente = new Pessoa(nome, cpf, email);
+
+		Conta conta = new Conta(cliente);
+
+		contasBancarias.add(conta);
+		System.out.println("--- Sua conta foi criada com sucesso! ---");
+
+		operacoes();
+		
+	}
+	
+	private static Conta encontrarConta(int numeroConta) {
+		Conta conta = null;
+		if(contasBancarias.size() > 0) {
+			for(Conta c: contasBancarias) {
+				if(c.getNumeroConta() == numeroConta);
+				conta = c;
+			}
+		}
+		return conta;
+	}
 }

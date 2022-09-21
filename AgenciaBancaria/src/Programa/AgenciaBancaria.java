@@ -28,7 +28,6 @@ public class AgenciaBancaria {
 		System.out.println("|   Opção 6 - Sair          |");
 
 		int operacao = input.nextInt();
-		
 
 		switch (operacao) {
 		case 1:
@@ -83,17 +82,36 @@ public class AgenciaBancaria {
 		System.out.println("--- Sua conta foi criada com sucesso! ---");
 
 		operacoes();
-		
+
 	}
-	
+
 	private static Conta encontrarConta(int numeroConta) {
 		Conta conta = null;
-		if(contasBancarias.size() > 0) {
-			for(Conta c: contasBancarias) {
-				if(c.getNumeroConta() == numeroConta);
+		if (contasBancarias.size() > 0) {
+			for (Conta c : contasBancarias) {
+				if (c.getNumeroConta() == numeroConta)
+					;
 				conta = c;
 			}
 		}
 		return conta;
+	}
+
+	public static void depositar() {
+		System.out.println("Número da conta: ");
+		int numeroConta = input.nextInt();
+
+		Conta conta = encontrarConta(numeroConta);
+
+		if (conta != null) {
+			System.out.println(" Qual valor deseja depositar? ");
+			Double valorDeposito = input.nextDouble();
+			conta.depositar(valorDeposito);
+			System.out.println(" Valor depositado com sucesso! ");
+		} else {
+			System.out.println(" Conta não encontrada! ");
+		}
+		operacoes();
+
 	}
 }

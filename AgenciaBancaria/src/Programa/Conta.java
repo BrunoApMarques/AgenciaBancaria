@@ -77,4 +77,9 @@ public class Conta {
 			System.out.println("Não foi possivel realizar a transferencia!");
 		}
 	}
+
+	public void transferencia(Conta contaDestinatario, Double valor) {
+		// TODO Auto-generated method stub
+		
+	}
 }

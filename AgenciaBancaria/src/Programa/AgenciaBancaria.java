@@ -11,8 +11,9 @@ public class AgenciaBancaria {
 	public static void main(String[] args) {
 		contasBancarias = new ArrayList<Conta>();
 		operacoes();
-	
+
 	}
+
 	public static void operacoes() {
 
 		System.out.println("------------------------------------------------------");

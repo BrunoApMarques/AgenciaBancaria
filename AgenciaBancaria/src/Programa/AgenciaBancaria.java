@@ -11,8 +11,8 @@ public class AgenciaBancaria {
 	public static void main(String[] args) {
 		contasBancarias = new ArrayList<Conta>();
 		operacoes();
+	
 	}
-
 	public static void operacoes() {
 
 		System.out.println("------------------------------------------------------");
@@ -62,7 +62,7 @@ public class AgenciaBancaria {
 		}
 	}
 
-	public static void CriarConta() {
+	public static void criarConta() {
 		// System.out.println("Você está criando uma conta\n");
 
 		System.out.println("\nNome: ");
@@ -89,9 +89,9 @@ public class AgenciaBancaria {
 		Conta conta = null;
 		if (contasBancarias.size() > 0) {
 			for (Conta c : contasBancarias) {
-				if (c.getNumeroConta() == numeroConta)
-					;
-				conta = c;
+				if (c.getNumeroConta() == numeroConta) {
+					conta = c;
+				}
 			}
 		}
 		return conta;
@@ -112,6 +112,59 @@ public class AgenciaBancaria {
 			System.out.println(" Conta não encontrada! ");
 		}
 		operacoes();
-
 	}
+
+	public static void sacar() {
+		System.out.println("Número da conta: ");
+		int numeroConta = input.nextInt();
+
+		Conta conta = encontrarConta(numeroConta);
+
+		if (conta != null) {
+			System.out.println(" Qual valor deseja sacar? ");
+			Double valorSaque = input.nextDouble();
+			conta.sacar(valorSaque);
+		} else {
+			System.out.println(" Conta não encontrada! ");
+		}
+		operacoes();
+	}
+
+	public static void transferir() {
+		System.out.println("Númerro da conta do remetente: ");
+		int numeroContaRemetente = input.nextInt();
+
+		Conta contaRemetente = encontrarConta(numeroContaRemetente);
+
+		if (contaRemetente != null) {
+			System.out.println("Número da conta do destinatário: ");
+			int numeroContaDestinatario = input.nextInt();
+
+			Conta contaDestinatario = encontrarConta(numeroContaDestinatario);
+
+			if (contaDestinatario != null) {
+				System.out.println("Valor da transferência: ");
+				Double valor = input.nextDouble();
+
+				contaRemetente.transferir(contaDestinatario, valor);
+			} else {
+				System.out.println("A conta para depósito não foi encontrada");
+			}
+		} else {
+			System.out.println("Conta para transferência não encontrada");
+		}
+		operacoes();
+	}
+
+	public static void listarContas() {
+		if (contasBancarias.size() > 0) {
+			for (Conta conta : contasBancarias) {
+				System.out.println(conta);
+			}
+		} else {
+			System.out.println("Não há contas cadastradas!");
+		}
+		operacoes();
+	}
+
 }

@@ -12,7 +12,7 @@ public class Pessoa {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
-		counter += 1;
+		setCounter(getCounter() + 1);
 	}
 
 	public String getNome() {
@@ -43,5 +43,13 @@ public class Pessoa {
 		return "\nNome: " + this.getNome() + 
 				"\nCPF: " + this.getCpf() + 
 				"\nEmail:" + this.getEmail();
+	}
+
+	public static int getCounter() {
+		return counter;
+	}
+
+	public static void setCounter(int counter) {
+		Pessoa.counter = counter;
 	}
 }
